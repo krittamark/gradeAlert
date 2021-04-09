@@ -1,17 +1,14 @@
+const config = require('./config');
 const request = require('request');
 const sound = require('sound-play');
-const url = 'http://academic.skr.ac.th/grade/skr63_2/';
-let inter = setInterval(check(url, () => {
+const opn = require('opn');
+
+let inter = setInterval(check(config.endpointUrl, () => {
     clearInterval(inter);
-    sound.play("alert.mp3", 0.1);
-}), 5000);
+    opn(config.endpointUrl);
+    sound.play(config.alertSound, config.alertSoundVolume);
+}), config.checkingTime * 1000);
 
 function check(url, success) {
-    return () => {
-            request(url, function(err, res, body) {
-            if (res.statusCode === 200) {
-                success();
-            }
-        })
-    };
+    return () => request(url, (err, res, body) => (res.statusCode === 200) ? success() : '');
 }
