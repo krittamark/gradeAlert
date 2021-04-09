@@ -1,6 +1,6 @@
 const request = require('request');
 const sound = require('sound-play');
-const url = 'http://academic.skr.ac.th/grade/skr63_1/';
+const url = 'http://academic.skr.ac.th/grade/skr63_2/';
 let inter = setInterval(check(url, () => {
     clearInterval(inter);
     sound.play("alert.mp3", 0.1);
