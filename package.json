@@ -10,8 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.21.1",
     "opn": "^6.0.0",
-    "request": "^2.88.2",
     "sound-play": "^1.1.0"
   }
 }
